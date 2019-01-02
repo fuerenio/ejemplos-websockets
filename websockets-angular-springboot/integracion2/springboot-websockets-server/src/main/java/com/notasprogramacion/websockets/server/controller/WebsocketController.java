@@ -36,12 +36,14 @@ public class WebsocketController {
 	
 	@MessageMapping("/message")
     public void processMessageFromClient(@Payload PersonaDto personaDto, SimpMessageHeaderAccessor  headerAccessor) throws Exception {
+		headerAccessor.setLeaveMutable(true);
 		String sessionId = headerAccessor.getSessionAttributes().get("sessionId").toString();
 		System.out.println("WebSocketController > "+sessionId+" envio el mensaje: "+personaDto.toString());
 		PersonaDto personaResponse = personaService.save(personaDto);
 		//System.out.println("WebSocketController > "+sessionId+" envio el mensaje: "+new Gson().fromJson(message, Map.class).get("name"));
 		headerAccessor.setSessionId(sessionId);
 		simpMessagingTemplate.convertAndSend("/topic/broadcastSubscribe", personaResponse);
-      
+		//https://stackoverflow.com/questions/34929578/spring-websocket-sendtosession-send-message-to-specific-session
+		simpMessagingTemplate.convertAndSendToUser(sessionId,"/queue/test", personaResponse, headerAccessor.getMessageHeaders());;
     }
 }
