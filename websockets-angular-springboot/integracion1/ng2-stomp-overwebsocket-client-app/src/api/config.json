@@ -1,0 +1,16 @@
+{
+    "host": "localhost",
+    "port": 8080,
+    "https": false,
+
+    "user": "myusername",
+    "pass": "mypassword",
+
+    "subscribe": ["/topic/testSubscribe"],
+    "publish": ["/topic/testSubscribe"],
+
+    "heartbeat_in": 0,
+    "heartbeat_out": 10000,
+
+    "debug": true
+}

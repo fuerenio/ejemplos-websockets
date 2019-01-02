@@ -1,0 +1,10 @@
+
+Agregar Service worker a proyecto angular
+ng add @angular/pwa --project ng2-stomp-overwebsocket-client-app
+
+Build the Project:
+ng build --prod
+
+
+iniciar la aplicacion en un http  server
+http-server -p 8080 -c-1 dist/ng2-stomp-overwebsocket-client-app

@@ -1,0 +1,36 @@
+<app-status></app-status>
+
+<div id="raw">
+    <button class="btn btn-primary" (click)="onClick()">Send Test Message</button>
+    <hr>
+    <form #userData="ngForm" (ngSubmit)="syncStudent(userData.value)">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="name">Nombre: </label> <input ngModel name="name" id="name" class="form-control" type="text"><br>
+            </div>
+            <div class="col-md-4">
+                <label for="clase">CLase: </label> <input ngModel name="clase" id="clase" class="form-control" type="text"><br/>
+            </div>
+            <div class="col-md-4">
+                <label for="pais">Pais: </label> <input ngModel name="pais" id="pais" class="form-control" type="text">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-primary" (click)="syncStudent(userData.value)">Guardar estudiante</button>
+            </div>
+        </div>
+
+    </form>
+    <h2>Messages</h2>
+    <p>{{count}} total</p>
+
+    <h3 *ngIf="count">Latest:</h3>
+    <pre>{{messages | async}}</pre>
+
+    <h3 *ngIf="messageQueue.length">History:</h3>
+    <ol>
+        <li *ngFor="let m of messageQueue">{{m}}</li>
+    </ol>
+
+</div>

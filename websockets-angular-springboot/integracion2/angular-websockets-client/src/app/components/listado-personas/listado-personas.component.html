@@ -1,0 +1,36 @@
+<h2>
+    Listado
+</h2>
+<div class="alert alert-warning" role="alert" *ngIf="! personas.length">
+    No hay personas por el momento
+</div>
+<div class="row" *ngIf="personas.length>0">
+
+    <div class="col">
+        <table id="tblPersons" class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Edad</th>
+                    <th scope="col">Sexo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let persona of personas">
+                    <th scope="row">{{persona.personId}}</th>
+                    <td>{{persona.nombre}}</td>
+                    <td>{{persona.apellidos}}to</td>
+                    <td>{{persona.email}}</td>
+                    <td>{{persona.direccion}}</td>
+                    <td>{{persona.edad}}</td>
+                    <td>{{persona.sexo==1?'Femenino':'Masculino'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<h2>&nbsp;</h2>
